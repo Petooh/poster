@@ -1,7 +1,5 @@
 # Poster
 
-To start your Phoenix app:
-
 ## Run application
 
   * Fetch this repository
