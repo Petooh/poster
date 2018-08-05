@@ -6,7 +6,12 @@ jobs:
   build:
     docker:
     # specify the version here
-    - image: circleci/elixir:1.4
+    - image: circleci/elixir:1.6.6
+    - image: mysql:5.7
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+      environment:
+        MYSQL_USER: root
+        MYSQL_ALLOW_EMPTY_PASSWORD: true
 
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
@@ -20,5 +25,8 @@ jobs:
     - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       # specify any bash command here prefixed with `run: `
     - run: mix deps.get
+    - run:
+        name: Mysql database
+        command: mysql  -h 127.0.0.1 -u root -e "create database poster_dev;"
     - run: mix ecto.create
     - run: mix test
