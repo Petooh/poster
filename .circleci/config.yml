@@ -25,6 +25,7 @@ jobs:
     - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
       # specify any bash command here prefixed with `run: `
     - run: mix deps.get
+    - run: sudo apt install mysql-client
     - run:
         name: Mysql database
         command: mysql  -h 127.0.0.1 -u root -e "create database poster_dev;"
