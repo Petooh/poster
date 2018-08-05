@@ -1,0 +1,30 @@
+<h2>Listing artists</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Photo</th>
+      <th>Band</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for artist <- @artists do %>
+    <tr>
+      <td><%= artist.name %></td>
+      <td><img src="<%= artist.photo %>" style="max-width: 50px; max-height: 50px;"></td>
+      <td><%= artist.band %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: artist_path(@conn, :show, artist), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: artist_path(@conn, :edit, artist), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: artist_path(@conn, :delete, artist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New artist", to: artist_path(@conn, :new) %></span>

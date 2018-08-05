@@ -1,0 +1,23 @@
+<h2>Show artist</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @artist.name %>
+  </li>
+
+  <li>
+    <strong>Photo:</strong>
+    <img src="<%= @artist.photo %>" style="max-width: 50px; max-height: 50px;">
+  </li>
+
+  <li>
+    <strong>Band:</strong>
+    <%= @artist.band %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: artist_path(@conn, :edit, @artist) %></span>
+<span><%= link "Back", to: artist_path(@conn, :index) %></span>
